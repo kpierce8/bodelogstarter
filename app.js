@@ -149,7 +149,7 @@ http.createServer(function (req, res) {
       case 'GET' :
 
       res.writeHead(200, {'Content-Type': 'text/html'});
-      clearData();
+      clearData(addData);
       createWebpage(req, res);
       addExerciseData(req, res);
       break;

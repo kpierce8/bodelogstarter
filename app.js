@@ -101,6 +101,8 @@ PUser.remove({}, function(err) {
 
 // Creating one user.
 function addData(){
+
+  clearData();
   var johndoe = new PUser ({
     name: { first: 'John', last: '  Doe   ' },
     age: 25
@@ -146,7 +148,6 @@ http.createServer(function (req, res) {
       case 'GET' :
 
       res.writeHead(200, {'Content-Type': 'text/html'});
-      clearData();
       addData();
       createWebpage(req, res);
       addExerciseData(req, res);

@@ -100,10 +100,11 @@ PUser.remove({}, function(err) {
 }
 
 // Creating one user.
-var johndoe = new PUser ({
-  name: { first: 'John', last: '  Doe   ' },
-  age: 25
-});
+function addData(){
+  var johndoe = new PUser ({
+    name: { first: 'John', last: '  Doe   ' },
+    age: 25
+  });
 
 // Saving it to the database.  
 johndoe.save(function (err) {if (err) console.log ('Error on save!')});
@@ -129,7 +130,7 @@ var alicesmith2 = new PUser ({
 });
 alicesmith2.save(function (err) {if (err) console.log ('Error on save!')});
 
-
+}
 
 // In case the browser connects before the database is connected, the
 // user will see this message.
@@ -146,6 +147,7 @@ http.createServer(function (req, res) {
 
       res.writeHead(200, {'Content-Type': 'text/html'});
       clearData();
+      addData();
       createWebpage(req, res);
       addExerciseData(req, res);
       break;

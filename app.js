@@ -137,10 +137,38 @@ var found = ['DB Connection not yet established.  Try again later.  Check the co
 // This is effectively the main interaction loop for the application. 
 // As new http requests arrive, the callback function gets invoked.
 http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  createWebpage(req, res);
-  addExerciseData(req, res);
+  if ('/' == req.url) {
+    switch (req.method) {
+      case 'GET' :
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        createWebpage(req, res);
+        addExerciseData(req, res);
+        break;
+      default:
+        badRequest(res); //added route logic from Node in Action page 88 to fill out app
+    } else {
+      notFound(res);
+    }
+
+  }
+
+
+  
 }).listen(theport);
+
+function badRequest(res) {
+  res.statusCode = 400;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('At least the Bad Request response worked');
+}
+
+
+function notFound(res) {
+  res.statusCode = 404;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('At least the Not Found response worked');
+}
+
 
 function createWebpage (req, res) {
   // Let's find all the documents

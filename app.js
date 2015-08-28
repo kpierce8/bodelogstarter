@@ -103,6 +103,14 @@ var alicesmith = new PUser ({
 alicesmith.save(function (err) {if (err) console.log ('Error on save!')});
 
 
+var alicesmith2 = new PUser ({
+  name: { first: 'Alicia', last: 'Wibbleton' },
+  age: 13
+});
+alicesmith2.save(function (err) {if (err) console.log ('Error on save!')});
+
+
+
 // In case the browser connects before the database is connected, the
 // user will see this message.
 var found = ['DB Connection not yet established.  Try again later.  Check the console output for error messages if this persists.'];

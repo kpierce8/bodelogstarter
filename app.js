@@ -42,7 +42,7 @@ var mongoose = require ("mongoose"); // The reason for this demo.
 var uristring = 
   process.env.MONGOLAB_URI || 
   process.env.MONGOHQ_URL || 
-  'mongodb://localhost/HelloMongoose';
+  'mongodb://localhost/bodelogstarter';
 
 // The http server will listen to an appropriate port, or default to
 // port 5000.

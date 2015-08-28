@@ -90,19 +90,20 @@ set1.save(function(err) {if (err) console.log('Error on save')});
 var PUser = mongoose.model('PowerUsers', userSchema);
 
 // Clear out old data
-function clearData(){
+function clearData(addData){
 PUser.remove({}, function(err) {
   console.log('in delete function');
   if (err) {
     console.log ('error deleting old data.');
   }
 });
+addData();
 }
 
 // Creating one user.
 function addData(){
 
-  clearData();
+
   var johndoe = new PUser ({
     name: { first: 'John', last: '  Doe   ' },
     age: 25
@@ -148,7 +149,7 @@ http.createServer(function (req, res) {
       case 'GET' :
 
       res.writeHead(200, {'Content-Type': 'text/html'});
-      addData();
+      clearData();
       createWebpage(req, res);
       addExerciseData(req, res);
       break;

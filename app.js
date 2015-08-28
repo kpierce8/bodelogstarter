@@ -90,7 +90,7 @@ set1.save(function(err) {if (err) console.log('Error on save')});
 var PUser = mongoose.model('PowerUsers', userSchema);
 
 // Clear out old data
-function clearData(){}
+function clearData(){
 PUser.remove({}, function(err) {
   console.log('in delete function');
   if (err) {

@@ -140,21 +140,18 @@ http.createServer(function (req, res) {
   if ('/' == req.url) {
     switch (req.method) {
       case 'GET' :
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        createWebpage(req, res);
-        addExerciseData(req, res);
-        break;
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      createWebpage(req, res);
+      addExerciseData(req, res);
+      break;
       default:
         badRequest(res); //added route logic from Node in Action page 88 to fill out app
+      }
     } else {
       notFound(res);
     }
-
-  }
-
-
-  
-}).listen(theport);
+    
+  }).listen(theport);
 
 function badRequest(res) {
   res.statusCode = 400;

@@ -68,6 +68,23 @@ var userSchema = new mongoose.Schema({
   age: { type: Number, min: 0}
 });
 
+var bodeSchema = new mongoose.Schema({
+  name: String,
+  reps: {type: Number, min: 0},
+  resistance: {type: Number, min: 0},
+  time: Date
+});
+
+var BLog = mongoose.model('Bodelog', bodeSchema);
+
+var set1 = new BLog ({
+  name: 'Squat',
+  reps: 4,
+  resistance: 225
+});
+
+set1.save(function(err) {if (err) console.log('Error on save')});
+
 // Compiles the schema into a model, opening (or creating, if
 // nonexistent) the 'PowerUsers' collection in the MongoDB database
 var PUser = mongoose.model('PowerUsers', userSchema);
@@ -122,6 +139,7 @@ var found = ['DB Connection not yet established.  Try again later.  Check the co
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
   createWebpage(req, res);
+  addExerciseData(req, res);
 }).listen(theport);
 
 function createWebpage (req, res) {
@@ -143,6 +161,16 @@ function createWebpage (req, res) {
       res.end('Error in first query. ' + err)
     };
   });
+}
+
+function addExerciseData (req, res) {
+  BLog.find({}).exec(function(err, result) {
+    if (!err) { 
+      res.write('List the exercise sets' + JSON.stringify(result, undefined, 2) +  html2 + result.length + html3);
+  } else {
+    res.end('Error in third query. ' + err)
+  }
+});
 }
 
 // Tell the console we're getting ready.

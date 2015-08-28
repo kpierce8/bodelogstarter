@@ -166,7 +166,7 @@ function createWebpage (req, res) {
 function addExerciseData (req, res) {
   BLog.find({}).exec(function(err, result) {
     if (!err) { 
-      res.write('List the exercise sets' + JSON.stringify(result, undefined, 2) +  html2 + result.length + html3);
+      res.write('<h2>List the exercise sets </h2></b> <pre><code>' + JSON.stringify(result, undefined, 2) +  html2 + result.length + html3);
   } else {
     res.end('Error in third query. ' + err)
   }

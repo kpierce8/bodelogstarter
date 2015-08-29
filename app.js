@@ -169,7 +169,7 @@ http.createServer(function (req, res) {
         req.on('data', function(chunk) {
             processSet(chunk);
             });
-        res.end();
+        res.end('ended process chunk = ' + chunk);
       break;
       default:
         badRequest(res); //added route logic from Node in Action page 88 to fill out app
@@ -229,14 +229,13 @@ function addExerciseData (req, res) {
 
 function processSet(setdata) {
   bob = setdata.split('&');
-
-var set2 = new BLog ({
-  name: bob[0].split('=')[1],
-  reps: bob[1].split('=')[1],
-  resistance: bob[2].split('=')[1]
-});
-
-set2.save(function(err) {if (err) console.log('Error on save')});
+  var set2 = new BLog ({
+    name: bob[0].split('=')[1],
+    reps: bob[1].split('=')[1],
+    resistance: bob[2].split('=')[1]
+  });
+  console.log('set processed');
+  set2.save(function(err) {if (err) console.log('Error on save')});
 }
 
 // Tell the console we're getting ready.
@@ -265,7 +264,6 @@ var html4 = '<h2> Queried (name.last = "Doe", age >64) Documents in MonogoDB dat
 var html5 = '</code></pre> <br\> <i>';
 var html6 = ' documents. </i> <br\> <br\> \
 <br\> <br\> <center><i> Demo code available at <a href="http://github.com/mongolab/hello-mongoose">github.com</a> </i></center>';
-var html7 = '<form method="post" action="/"><p><input type="text" name="exercise"/> Exercise</p><p><input type="text" name="reps"/> Reps</p><p><input type="text" name="resistance"/> Resistance</p><p><input type="submit" value="Add Set"/></p></form>';
-var html8 = '<form><p><input type="text" name="exercise"/> Exercise</p><p><input type="text" name="reps"/> Reps</p><p><input type="text" name="resistance"/> Resistance</p><p><input type="submit" value="Add Set"/></p></form>';
+var html7 = '<form method="post" action="/sets/"><p><input type="text" name="exercise"/> Exercise</p><p><input type="text" name="reps"/> Reps</p><p><input type="text" name="resistance"/> Resistance</p><p><input type="submit" value="Add Set"/></p></form>';
 
 

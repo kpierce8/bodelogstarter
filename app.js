@@ -167,9 +167,10 @@ http.createServer(function (req, res) {
       case 'POST':
         req.setEncoding('utf8');
         req.on('data', function(chunk) {
-            processSet(chunk);
+            console.log(chunk);
+            //processSet(chunk);
             });
-        res.end('ended process chunk = ' + chunk);
+        res.end('ended process chunk = ');
       break;
       default:
         badRequest(res); //added route logic from Node in Action page 88 to fill out app

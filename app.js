@@ -265,7 +265,7 @@ var html4 = '<h2> Queried (name.last = "Doe", age >64) Documents in MonogoDB dat
 var html5 = '</code></pre> <br\> <i>';
 var html6 = ' documents. </i> <br\> <br\> \
 <br\> <br\> <center><i> Demo code available at <a href="http://github.com/mongolab/hello-mongoose">github.com</a> </i></center>';
-var html7 = '<form method="post" action="/sets/"><p><input type="text" name="exercise"/> Exercise</p><p><input type="text" name="reps"/> Reps</p><p><input type="text" name="resistance"/> Resistance</p><p><input type="submit" value="Add Set"/></p></form>';
+var html7 = '<form method="post" action="/"><p><input type="text" name="exercise"/> Exercise</p><p><input type="text" name="reps"/> Reps</p><p><input type="text" name="resistance"/> Resistance</p><p><input type="submit" value="Add Set"/></p></form>';
 var html8 = '<form><p><input type="text" name="exercise"/> Exercise</p><p><input type="text" name="reps"/> Reps</p><p><input type="text" name="resistance"/> Resistance</p><p><input type="submit" value="Add Set"/></p></form>';
 
 

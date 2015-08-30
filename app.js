@@ -157,9 +157,9 @@ http.createServer(function (req, res) {
         req.setEncoding('utf8');
         req.on('data', function(chunk) {
             console.log(chunk);
-            //processSet(chunk);
+            processSet(chunk);
             });
-        res.end('ended process chunk = ');
+        res.end('ended process chunk from / ');
       break;
       default:
         badRequest(res); //added route logic from Node in Action page 88 to fill out app
@@ -175,9 +175,9 @@ http.createServer(function (req, res) {
         req.setEncoding('utf8');
         req.on('data', function(chunk) {
             console.log(chunk);
-            //processSet(chunk);
+            processSet(chunk);
             });
-        res.end('ended process chunk = ');
+        res.end('ended process chunk from /sets/' + html8 );
       break;
       default:
         badRequest(res); //added route logic from Node in Action page 88 to fill out app
@@ -273,5 +273,5 @@ var html5 = '</code></pre> <br\> <i>';
 var html6 = ' documents. </i> <br\> <br\> \
 <br\> <br\> <center><i> Demo code available at <a href="http://github.com/mongolab/hello-mongoose">github.com</a> </i></center></b><a href="../sets/">Add Set</a>';
 var html7 = '<form method="post" action="/"><p><input type="text" name="exercise"/> Exercise</p><p><input type="text" name="reps"/> Reps</p><p><input type="text" name="resistance"/> Resistance</p><p><input type="submit" value="Add Set"/></p></form>';
-
+var html8 = '</b> <a href = "../">Home</a>'
 

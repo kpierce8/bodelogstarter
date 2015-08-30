@@ -143,9 +143,9 @@ var found = ['DB Connection not yet established.  Try again later.  Check the co
 // would use a complete web framework and router like express.js). 
 // This is effectively the main interaction loop for the application. 
 // As new http requests arrive, the callback function gets invoked.
-clearData(addData);
+
 http.createServer(function (req, res) {
- 
+  clearData(addData);
   if ('/' == req.url) {
     switch (req.method) {
       case 'GET' :
@@ -241,9 +241,10 @@ function processSet(setdata) {
     name: bob[0].split('=')[1],
     reps: bob[1].split('=')[1],
     resistance: bob[2].split('=')[1]
-  });
+  }).save(function(err) {if (err) console.log('Error on save')});
   console.log('set processed');
-  set2.save(function(err) {if (err) console.log('Error on save')});
+  
+  //set2.save(function(err) {if (err) console.log('Error on save')});
 }
 
 // Tell the console we're getting ready.
@@ -273,5 +274,5 @@ var html5 = '</code></pre> <br\> <i>';
 var html6 = ' documents. </i> <br\> <br\> \
 <br\> <br\> <center><i> Demo code available at <a href="http://github.com/mongolab/hello-mongoose">github.com</a> </i></center></b><a href="../sets/">Add Set</a>';
 var html7 = '<form method="post" action="/"><p><input type="text" name="exercise"/> Exercise</p><p><input type="text" name="reps"/> Reps</p><p><input type="text" name="resistance"/> Resistance</p><p><input type="submit" value="Add Set"/></p></form>';
-var html8 = '</b> <a href = "../">Home</a>'
+var html8 = '<a href = "../"> Home</a>'
 
